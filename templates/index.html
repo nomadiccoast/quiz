@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Studysia Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particles"></canvas>
+    
+    
+    
+    <div class="container quiz-start">
+        <div class="quiz-card">
+            <h1 class="quiz-title">Welcome to Studysia Quiz</h1>
+            <p class="quiz-subtitle">Test your knowledge with AI-generated questions</p>
+            
+            <form method="post" action="/start" class="quiz-form">
+                <div class="form-group">
+                    <label for="topic">Topic:</label>
+                    <input type="text" id="topic" name="topic" required placeholder="e.g. motion,chemical bonding">
+                </div>
+                <div class="form-group">
+                    <label for="num_questions">Number of Questions:</label>
+                    <input type="number" id="num_questions" name="num_questions" value="5" min="1" max="20">
+                </div>
+                <button type="submit" class="btn btn-primary">Start Quiz</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>

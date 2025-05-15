@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz - {{ topic }} | Studysia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Studysia Quiz</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container quiz-container">
+        <div class="quiz-card">
+            <div class="quiz-header">
+                <h2 class="quiz-topic">{{ topic }}</h2>
+                <div class="quiz-progress">
+                    <span class="current-question">{{ index+1 }}</span>/<span class="total-questions">{{ num_questions }}</span>
+                </div>
+            </div>
+            
+            <div class="quiz-question">{{ quiz[index].question }}</div>
+            
+            <form method="post" class="quiz-options">
+                {% for opt in quiz[index].options %}
+                <div class="quiz-option">
+                    <input type="radio" id="option{{ loop.index }}" name="answer" value="{{ opt }}" required>
+                    <label for="option{{ loop.index }}">
+                        <span class="option-letter">{{ ['A','B','C','D'][loop.index0] }}</span>
+                        <span class="option-text">{{ opt }}</span>
+                    </label>
+                </div>
+                {% endfor %}
+                
+                <button type="submit" class="btn btn-primary">Submit Answer</button>
+            </form>
+            
+            {% if feedback %}
+            <div class="quiz-feedback {% if 'Correct' in feedback %}correct{% else %}wrong{% endif %}">
+                <i class="fas {% if 'Correct' in feedback %}fa-check-circle{% else %}fa-times-circle{% endif %}"></i>
+                {{ feedback }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>

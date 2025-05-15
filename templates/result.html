@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results | Studysia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Particle Background Canvas -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Studysia Quiz</span>
+            </a>
+        </div>
+    </nav>
+    
+    <div class="container result-container">
+        <div class="quiz-card">
+            <div class="result-header">
+                <i class="fas fa-trophy"></i>
+                <h2>Quiz Completed!</h2>
+                <p>You've finished the quiz on {{ topic }}</p>
+            </div>
+            
+            <div class="result-score">
+                <div class="score-circle">
+                    <span class="score">{{ score }}</span>/<span class="total">{{ total }}</span>
+                </div>
+                <div class="score-percentage">
+                    {{ ((score/total)*100)|round|int }}%
+                </div>
+            </div>
+            
+            <a href="/" class="btn btn-primary">Start New Quiz</a>
+        </div>
+    </div>
+    
+    <script src="/static/script.js"></script>
+</body>
+</html>
