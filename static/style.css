@@ -147,9 +147,7 @@
 }
 
 .quiz-feedback.correct {
-    background: rgba(40, 167, 69, 0.1);
-    border: 1px solid rgba(40, 167, 69, 0.3);
-    color: #28a745;
+   
 }
 
 .quiz-feedback.wrong {
