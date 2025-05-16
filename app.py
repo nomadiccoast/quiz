@@ -3,10 +3,16 @@ import requests
 import json
 import re
 from flask import Flask, request, render_template, redirect, url_for, session
+import os
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host="0.0.0.0", port=port)
 
 # Initialize Flask app
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'  # Use a secure key in production
+
+
 
 # Free Groq API key
 api_key = "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"
