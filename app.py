@@ -12,6 +12,7 @@ app.run(host="0.0.0.0", port=port)
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'  # Use a secure key in production
 
+gunicorn app:app --bind 0.0.0.0:$PORT
 
 
 # Free Groq API key
@@ -66,6 +67,7 @@ def generate_question(topic):
                        f"'question', 'options', 'answer', and 'explanation'. "
                        f"No extra text or formatting, just valid JSON."
                         f"only give valid JSON"
+                         f"give different questions each and every time"
         }]
     }
 
