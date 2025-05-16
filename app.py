@@ -12,7 +12,7 @@ app.run(host="0.0.0.0", port=port)
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'  # Use a secure key in production
 
-gunicorn app:app --bind 0.0.0.0:$PORT
+
 
 
 # Free Groq API key
