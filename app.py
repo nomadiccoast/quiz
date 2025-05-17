@@ -8,7 +8,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello from Flask on Render!"
+    return "Your main app is working!"
+
+# Only run the dev server when not on Render
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
 import os
 
