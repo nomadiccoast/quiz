@@ -54,11 +54,17 @@ def generate_question(topic):
         "model": "meta-llama/llama-4-scout-17b-16e-instruct",
         "messages": [{
             "role": "user",
-            "content": f"Generate exactly one CBSE previous year question for the topic: {topic}. "
-                       f"Return ONLY the JSON object with these fields: "
-                       f"'question', 'options', 'answer', and 'explanation'. "
-                       f"No extra text or formatting, just valid JSON. "
-                       f"Only give valid JSON. Give different questions each and every time."
+            "content": (
+    f"Generate one unique CBSE previous year question based on the topic: {topic}. "
+    f"Ensure it is significantly different from any recent questions—change the wording, style, and options. "
+    f"Vary the type of question (MCQ, assertion-reason, match the following, diagram-based, etc.) where applicable. "
+    f"Make sure all four options are plausible but only one is correct. "
+    f"Format the output strictly as a single valid JSON object with the following fields: "
+    f"'question' (string), 'options' (list of 4 strings), 'answer' (string, must match one of the options), and 'explanation' (string). "
+    f"Return ONLY valid JSON. No text, no commentary—only the JSON object. "
+    f"Make the output different each and every time, even if the topic is the same."
+)
+
         }]
     }
 
