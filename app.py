@@ -2,7 +2,14 @@
 import requests
 import json
 import re
-from flask import Flask, request, render_template, redirect, url_for, session
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello from Flask on Render!"
+
 import os
 
 port = int(os.environ.get("PORT", 5000))
