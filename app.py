@@ -14,7 +14,7 @@ if not os.path.exists(GOOGLE_CREDS):
         f.write(decoded)
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'  # Replace this in production
+app.secret_key = 'your-secret-key'  # ok
 
 api_key = "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"
 
