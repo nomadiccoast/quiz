@@ -7,8 +7,8 @@ from flask import Flask, request, render_template, redirect, url_for, session
 app = Flask(__name__)
 app.secret_key = 'your-secret-key'  # Use a secure key in production
 
-# Free Groq API key
-api_key = "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"
+
+api_key = "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"
 
 # Save question to JSON file
 def save_question_to_file(question_data, topic):
