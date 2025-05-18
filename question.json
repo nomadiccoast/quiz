@@ -1,0 +1,72 @@
+[
+  {
+    "topic": "iphone",
+    "question": {
+      "question": "Assertion: Apple's iPhone uses a technology called Face ID, which is a type of biometric authentication. Reason: Face ID uses infrared cameras and machine learning algorithms to create a 3D map of a user's face.",
+      "options": [
+        "Both assertion and reason are true and reason is the correct explanation of assertion",
+        "Both assertion and reason are true but reason is not the correct explanation of assertion",
+        "Assertion is true but reason is false",
+        "Assertion is false but reason is true"
+      ],
+      "answer": "Both assertion and reason are true and reason is the correct explanation of assertion",
+      "explanation": "Face ID is a facial recognition technology developed by Apple for the iPhone. It uses a combination of infrared cameras, flood illuminators, and machine learning algorithms to create a 3D map of a user's face, allowing for secure and efficient authentication. Therefore, both the assertion and reason are true, and the reason correctly explains the assertion."
+    }
+  },
+  {
+    "topic": "iphone",
+    "question": {
+      "question": "Assertion: Apple's iPhone uses a virtual assistant named 'Siri' which was acquired by Apple in 2010. Reason: The primary function of Siri is to provide users with a means to interact with their iPhone using natural language.",
+      "options": [
+        "Both assertion and reason are true and reason is the correct explanation of assertion",
+        "Both assertion and reason are true but reason is not the correct explanation of assertion",
+        "Assertion is true but reason is false",
+        "Assertion is false but reason is true"
+      ],
+      "answer": "Both assertion and reason are true and reason is the correct explanation of assertion",
+      "explanation": "The assertion that Apple's iPhone uses a virtual assistant named 'Siri' which was acquired by Apple in 2010 is true. The reason provided that the primary function of Siri is to provide users with a means to interact with their iPhone using natural language is also true and correctly explains the role of Siri, making it the correct explanation of the assertion."
+    }
+  },
+  {
+    "topic": "iphone",
+    "question": {
+      "question": "What is the primary function of Face ID in iPhones, introduced from iPhone X onwards?",
+      "options": [
+        "To enhance the camera resolution for better image quality",
+        "To provide an additional layer of security through facial recognition",
+        "To improve battery life by optimizing power consumption",
+        "To enable wireless charging capabilities"
+      ],
+      "answer": "To provide an additional layer of security through facial recognition",
+      "explanation": "Face ID is a facial recognition system designed by Apple, introduced with the iPhone X in 2017. It replaced Touch ID and is used for secure authentication, similar to how Touch ID used fingerprints. Face ID is a critical feature in newer iPhone models for unlocking the device and authenticating purchases."
+    }
+  },
+  {
+    "topic": "iphone",
+    "question": {
+      "question": "Assertion: The iPhone's Night mode feature helps reduce eye strain while browsing in low-light conditions. Reason: Night mode achieves this by applying a blue light filter to the display.",
+      "options": [
+        "Both assertion and reason are true and reason is the correct explanation of assertion",
+        "Both assertion and reason are true but reason is not the correct explanation of assertion",
+        "Assertion is true but reason is false",
+        "Assertion is false but reason is true"
+      ],
+      "answer": "Both assertion and reason are true and reason is the correct explanation of assertion",
+      "explanation": "The Night mode feature on iPhones is designed to reduce eye strain during nighttime or low-light conditions. It works by filtering out blue light emitted from the screen, which can interfere with sleep and cause eye strain. Therefore, both the assertion and reason are true, and the reason accurately explains how Night mode helps reduce eye strain."
+    }
+  },
+  {
+    "topic": "iphone",
+    "question": {
+      "question": "Assertion: The iPhone's Night mode feature helps reduce eye strain in low-light conditions. Reason: This feature adjusts the screen's color temperature to reduce blue light emission.",
+      "options": [
+        "Both assertion and reason are true, and reason is the correct explanation of assertion",
+        "Both assertion and reason are true, but reason is not the correct explanation of assertion",
+        "Assertion is true, but reason is false",
+        "Assertion is false, but reason is true"
+      ],
+      "answer": "Both assertion and reason are true, and reason is the correct explanation of assertion",
+      "explanation": "The Night mode feature on iPhones is designed to reduce eye strain during nighttime or low-light conditions. It achieves this by shifting the screen's color temperature to a warmer tone, which effectively reduces the emission of blue light. Blue light, which is emitted by digital devices, can interfere with the body's production of melatonin, the hormone responsible for regulating sleep-wake cycles. By reducing blue light emission, Night mode helps minimize potential disruptions to sleep patterns and reduces eye strain. Therefore, both the assertion and reason are true, and the reason accurately explains the assertion."
+    }
+  }
+]
