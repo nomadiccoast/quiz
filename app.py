@@ -5,15 +5,18 @@ import requests
 from flask import Flask, request, render_template, redirect, url_for, session
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'  # Use a secure key in production
-
+app.secret_key = 'your-secret-key'  # Replace this in production
 
 api_key = "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"
+
+# Ensure question.json is always saved in the current directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+QUESTION_FILE = os.path.join(BASE_DIR, 'question.json')
 
 # Save question to JSON file
 def save_question_to_file(question_data, topic):
     try:
-        with open('question.json', 'r') as f:
+        with open(QUESTION_FILE, 'r') as f:
             questions = json.load(f)
             if not isinstance(questions, list):
                 questions = []
@@ -25,8 +28,10 @@ def save_question_to_file(question_data, topic):
         "question": question_data
     })
 
-    with open('question.json', 'w') as f:
+    with open(QUESTION_FILE, 'w') as f:
         json.dump(questions, f, indent=2)
+
+    print(f"[✅] Saved question to {QUESTION_FILE}")
 
 # Extract JSON from response
 def extract_json_from_response(text):
@@ -55,16 +60,15 @@ def generate_question(topic):
         "messages": [{
             "role": "user",
             "content": (
-    f"Generate one unique CBSE previous year question based on the topic: {topic}. "
-    f"Ensure it is significantly different from any recent questions—change the wording, style, and options. "
-    f"Vary the type of question (MCQ, assertion-reason, match the following, diagram-based, etc.) where applicable. "
-    f"Make sure all four options are plausible but only one is correct. "
-    f"Format the output strictly as a single valid JSON object with the following fields: "
-    f"'question' (string), 'options' (list of 4 strings), 'answer' (string, must match one of the options), and 'explanation' (string). "
-    f"Return ONLY valid JSON. No text, no commentary—only the JSON object. "
-    f"Make the output different each and every time, even if the topic is the same."
-)
-
+                f"Generate one unique CBSE previous year question based on the topic: {topic}. "
+                f"Ensure it is significantly different from any recent questions—change the wording, style, and options. "
+                f"Vary the type of question (MCQ, assertion-reason, match the following, diagram-based, etc.) where applicable. "
+                f"Make sure all four options are plausible but only one is correct. "
+                f"Format the output strictly as a single valid JSON object with the following fields: "
+                f"'question' (string), 'options' (list of 4 strings), 'answer' (string, must match one of the options), and 'explanation' (string). "
+                f"Return ONLY valid JSON. No text, no commentary—only the JSON object. "
+                f"Make the output different each and every time, even if the topic is the same."
+            )
         }]
     }
 
@@ -81,17 +85,18 @@ def generate_question(topic):
             question_data = extract_json_from_response(content)
 
             if question_data:
-                if all(k in question_data for k in ['question', 'options', 'answer', 'explanation']):
+                required_keys = ['question', 'options', 'answer', 'explanation']
+                if all(k in question_data for k in required_keys):
                     save_question_to_file(question_data, topic)
                     return question_data
                 else:
-                    print("Missing required fields.")
+                    print("[❌] Missing required fields in AI response.")
             else:
-                print("Invalid JSON format.")
+                print("[❌] Invalid JSON format returned from Groq.")
         else:
-            print(f"API Error {response.status_code}: {response.text}")
+            print(f"[❌] API Error {response.status_code}: {response.text}")
     except Exception as e:
-        print(f"API Exception: {e}")
+        print(f"[❌] API Exception: {e}")
     return None
 
 # Home page
@@ -166,6 +171,16 @@ def result():
     total = session.get("num_questions", 0)
     session.clear()
     return render_template('result.html', score=score, total=total)
+
+# View all saved questions (for debug)
+@app.route("/all-questions", methods=["GET"])
+def all_questions():
+    try:
+        with open(QUESTION_FILE, 'r') as f:
+            data = json.load(f)
+        return {"questions": data}
+    except Exception as e:
+        return {"error": str(e)}, 500
 
 # Run the app
 if __name__ == "__main__":
