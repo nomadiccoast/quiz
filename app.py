@@ -4,17 +4,8 @@ import re
 import requests
 from flask import Flask, request, render_template, redirect, url_for, session
 
-import base64
-
-GOOGLE_CREDS = "quiz-service-account.json"
-
-if not os.path.exists(GOOGLE_CREDS):
-    decoded = base64.b64decode(os.environ["GOOGLE_CREDS_BASE64"])
-    with open(GOOGLE_CREDS, "wb") as f:
-        f.write(decoded)
-
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'  # ok
+app.secret_key = 'your-secret-key'  # Replace this in production
 
 api_key = "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"
 
@@ -148,10 +139,6 @@ def quiz():
         idx = session["index"]
         answer = request.form.get("answer")
         correct = session["quiz"][idx]["answer"]
-
-        # Save the user answer to this question
-        session["quiz"][idx]["user_answer"] = answer
-
         session["feedback"] = "Correct!" if answer == correct else f"Wrong! Correct answer: {correct}"
         if answer == correct:
             session["score"] += 1
@@ -182,20 +169,6 @@ def result():
 
     score = session.get("score", 0)
     total = session.get("num_questions", 0)
-    topic = session.get("topic", "Unknown")
-
-    # Send all questions + user answers to Google Sheets
-    for q in session.get("quiz", []):
-        send_to_google_sheet({
-             "name": session.get("name", "Anonymous"),
-        "subject": session.get("subject", "General"),
-        "chapter": session.get("chapter", "Unknown"),
-        "topic": session.get("topic", "Unknown"),
-        "question": q.get("question", ""),
-        "correct_answer": q.get("answer", ""),
-        "user_answer": q.get("user_answer", "")
-        })
-
     session.clear()
     return render_template('result.html', score=score, total=total)
 
